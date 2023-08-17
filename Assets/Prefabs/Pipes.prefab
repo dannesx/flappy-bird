@@ -384,5 +384,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 048bb2071bcad9c1db838869c814e5e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  extension: 0
   speed: 15
+  deadZone: -35
