@@ -10,6 +10,8 @@ public class Bird : MonoBehaviour
     public float flapForce;
     bool isAlive = true;
 
+    public SpriteRenderer[] wings;
+
     void Start(){
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
@@ -17,7 +19,16 @@ public class Bird : MonoBehaviour
     }
 
     void Update(){
-        if(Input.GetKeyDown("space") && isAlive) rb.velocity = Vector2.up * flapForce;
+        if(Input.GetKeyDown("space") || Input.GetMouseButtonDown(0) && isAlive){
+            rb.velocity = Vector2.up * flapForce;
+            FindObjectOfType<AudioManager>().WingSFX();
+        }
+    }
+
+    void LateUpdate(){
+        foreach(SpriteRenderer wing in wings){
+            wing.flipY = rb.velocity.y < 0f;
+        }
     }
 
     void OnCollisionEnter2D(){
