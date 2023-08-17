@@ -23,6 +23,8 @@ public class Spawner : MonoBehaviour
     }
 
     void Spawn(){
-        Instantiate(prefab, transform.position, transform.rotation);
+        float randomY = Random.Range(-amplitude, amplitude);
+        Vector3 position = new Vector3(transform.position.x, randomY, 0f);
+        Instantiate(prefab, position, transform.rotation);
     }
 }
